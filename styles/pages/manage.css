@@ -1,0 +1,129 @@
+.manage-layout {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.manage-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.manage-book-head {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.manage-book-head .cover {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.manage-tip {
+  padding: 0.75rem 1rem;
+  background: var(--surface-2, rgba(0, 0, 0, 0.04));
+  border-radius: 0.5rem;
+}
+
+.manage-requests h3 {
+  margin: 0 0 1rem;
+}
+
+.manage-request-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.manage-request {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.manage-request-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.manage-request-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.status-badge.pending {
+  background: rgba(45, 107, 74, 0.15);
+  color: #143f29;
+}
+
+.status-badge.approved {
+  background: rgba(31, 92, 61, 0.15);
+  color: #1f5c3d;
+}
+
+.status-badge.cancelled {
+  background: rgba(196, 87, 47, 0.12);
+  color: #a33b1a;
+}
+
+.status-badge.returned {
+  background: rgba(31, 92, 61, 0.1);
+  color: #1f5c3d;
+}
+
+.pickup-details {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.5rem;
+}
+
+.manage-success-link {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px dashed rgba(31, 92, 61, 0.35);
+  border-radius: 0.5rem;
+  background: rgba(31, 92, 61, 0.06);
+}
+
+.manage-success-link input {
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.location-picker-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.location-picker-label {
+  font-weight: 600;
+}
+
+.location-picker-hint {
+  margin: 0;
+}
+
+.container.narrow {
+  max-width: 720px;
+}
+
+.center {
+  text-align: center;
+}

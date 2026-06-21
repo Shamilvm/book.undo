@@ -1,0 +1,189 @@
+.legend {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.leg-public {
+  color: #1f5c3d;
+}
+.leg-school {
+  color: #2d6b4a;
+}
+.leg-osm {
+  color: #4a6fa5;
+}
+.map-wrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+#map {
+  height: min(68vh, 620px);
+  min-height: 520px;
+  width: 100%;
+  background: var(--paper-2-surface);
+}
+.spot-section {
+  margin-top: 2.5rem;
+}
+.spot-section .section-head {
+  margin-bottom: 1rem;
+}
+.spot-section--osm .section-head,
+.report-section .section-head {
+  max-width: min(52rem, 100%);
+}
+.spot-section h2 {
+  font-size: 1.35rem;
+  margin: 0.25rem 0 0;
+}
+.spot-list {
+  margin-top: 0;
+}
+.spot {
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  background: var(--card-surface);
+}
+.spot strong {
+  font-family: var(--font-serif);
+  display: block;
+  margin-top: 0.3rem;
+}
+.small {
+  font-size: 0.85rem;
+  margin: 0.1rem 0;
+}
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.dot-public {
+  background: #1f5c3d;
+}
+.dot-sponsored {
+  background: #143f29;
+}
+.dot-osm {
+  background: #4a6fa5;
+}
+.report-section .form {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: none;
+}
+.report-section .form form {
+  display: grid;
+  gap: 0.9rem;
+}
+.report-section .form label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.report-section .form input {
+  font: inherit;
+  padding: 0.65rem 0.8rem;
+  font-weight: 400;
+}
+.report-section .form .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+.report-section .form .location-picker-field {
+  display: grid;
+  gap: 0.5rem;
+}
+.report-section .form .location-picker-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.report-section .form .location-picker-hint {
+  margin: 0;
+}
+.location-dialog {
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  max-width: min(720px, calc(100vw - 2rem));
+  width: 100%;
+  background: var(--paper-surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+.location-dialog::backdrop {
+  background: color-mix(in srgb, var(--ink) 35%, transparent);
+  backdrop-filter: blur(2px);
+}
+.location-dialog-body {
+  display: grid;
+  gap: 0.9rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+.location-dialog-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0;
+}
+.location-dialog-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.location-dialog .location-picker {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1.5px solid var(--ink);
+}
+.location-dialog .location-picker-map {
+  height: min(55vh, 420px);
+  min-height: 280px;
+  width: 100%;
+  background: var(--paper-2-surface);
+  cursor: crosshair;
+}
+.location-dialog .dialog-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+.location-picker {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1.5px solid var(--ink);
+}
+.location-picker-map {
+  height: 280px;
+  width: 100%;
+  background: var(--paper-2-surface);
+  cursor: crosshair;
+}
+.report-section .form .report-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.report-section .form button[type="submit"] {
+  margin-top: 0.4rem;
+  justify-self: start;
+}
+@media (max-width: 760px) {
+  .report-section .form .row {
+    grid-template-columns: 1fr;
+  }
+}
+.add-note {
+  margin-top: 1.8rem;
+}

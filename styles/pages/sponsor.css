@@ -1,0 +1,156 @@
+.section-head--wide {
+  max-width: 60ch;
+}
+.sponsor-narrow {
+  max-width: 760px;
+  margin-inline: auto;
+}
+.school-card {
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.school-card:hover,
+.school-card:focus-visible {
+  border-color: var(--green);
+  box-shadow: var(--shadow-md);
+  outline: none;
+}
+.school-card-cta {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--green);
+}
+.school .school-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+.school .need {
+  font-size: 0.95rem;
+}
+.bar {
+  height: 8px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.5rem 0 0.3rem;
+}
+.bar span {
+  display: block;
+  height: 100%;
+  background: var(--green);
+  border-radius: 999px;
+}
+.list-school {
+  background: var(--paper-2-surface);
+}
+.list-school-dialog {
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  margin: auto;
+  max-width: min(560px, calc(100vw - 2rem));
+  width: 100%;
+  background: var(--paper-surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+.list-school-dialog::backdrop {
+  background: color-mix(in srgb, var(--ink) 35%, transparent);
+  backdrop-filter: blur(2px);
+}
+.list-school-dialog form {
+  display: grid;
+  gap: 0.9rem;
+}
+.list-school-dialog h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 0;
+}
+.list-school-dialog label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.list-school-dialog input,
+.list-school-dialog textarea {
+  font: inherit;
+  padding: 0.65rem 0.8rem;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-lg);
+  background: var(--paper-surface);
+  font-weight: 400;
+}
+.list-school-dialog textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+.list-school-dialog .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+.list-school-dialog .dialog-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+.list-school-dialog .privacy-note {
+  margin: -0.25rem 0 0;
+}
+.school-summary {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper-2-surface);
+}
+.school-summary-emoji {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+.school-summary strong {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+.school-summary p {
+  margin: 0.15rem 0 0;
+}
+.offer-type-field {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.offer-type-field legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.offer-type-options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.offer-type-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.offer-type-option input {
+  accent-color: var(--green);
+}
+@media (max-width: 480px) {
+  .list-school-dialog .row {
+    grid-template-columns: 1fr;
+  }
+}

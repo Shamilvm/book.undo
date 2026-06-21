@@ -1,0 +1,44 @@
+import { NextRequest } from "next/server";
+import { connectDB } from "@/lib/db";
+import { DigitalBook } from "@/lib/models/DigitalBook";
+import { requireAdmin, unauthorizedResponse } from "@/lib/auth";
+
+export async function GET(req: NextRequest) {
+  if (!requireAdmin(req)) return unauthorizedResponse();
+  try {
+    await connectDB();
+    const approvalStatus = req.nextUrl.searchParams.get("approvalStatus");
+    const limit = req.nextUrl.searchParams.get("limit") || "100";
+    const filter: Record<string, unknown> = {};
+    if (approvalStatus) filter.approvalStatus = approvalStatus;
+
+    const books = await DigitalBook.find(filter)
+      .sort({ createdAt: -1 })
+      .limit(parseInt(limit, 10));
+
+    return Response.json(books);
+  } catch {
+    return Response.json(
+      { error: "Failed to fetch digital books" },
+      { status: 500 },
+    );
+  }
+}
+
+export async function POST(req: NextRequest) {
+  if (!requireAdmin(req)) return unauthorizedResponse();
+  try {
+    await connectDB();
+    const body = await req.json();
+    const book = await DigitalBook.create({
+      ...body,
+      approvalStatus: "approved",
+    });
+    return Response.json(book, { status: 201 });
+  } catch {
+    return Response.json(
+      { error: "Failed to create digital book" },
+      { status: 400 },
+    );
+  }
+}
