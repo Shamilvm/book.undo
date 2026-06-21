@@ -46,9 +46,6 @@ const sponsorRequestSchema = new Schema<ISponsorRequest>(
   { timestamps: true },
 );
 
-if (process.env.NODE_ENV === "development" && mongoose.models.SponsorRequest) {
-  delete mongoose.models.SponsorRequest;
-}
-
 export const SponsorRequest =
+  (mongoose.models.SponsorRequest as mongoose.Model<ISponsorRequest>) ||
   mongoose.model<ISponsorRequest>("SponsorRequest", sponsorRequestSchema);
