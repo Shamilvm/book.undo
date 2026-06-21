@@ -4,21 +4,21 @@
 
 Book Undo is an open source web application that helps communities keep books in circulation instead of on shelves. List books to give away, borrow from neighbours, swap textbooks, sponsor school libraries, read public-domain titles online, and discover libraries on a map.
 
-**[Live demo](https://example.com)** — replace this URL with your deployed instance.
+**[Live demo](https://example.com)**
 
 ## Features
 
 ### Public web app
 
-| Area | What it does |
-| ---- | ------------ |
-| **Donate** | List books you want to pass on; manage listings via a private link |
-| **Borrow** | Find books shared near you and request to borrow |
+| Area                  | What it does                                                           |
+| --------------------- | ---------------------------------------------------------------------- |
+| **Donate**            | List books you want to pass on; manage listings via a private link     |
+| **Borrow**            | Find books shared near you and request to borrow                       |
 | **Textbook exchange** | Post textbooks to give or textbooks you need; manage listings by token |
-| **Sponsor schools** | Fund book boxes for schools and track sponsorship progress |
-| **Virtual library** | Read approved public-domain and digital books in the browser |
-| **Library map** | Discover community and OpenStreetMap libraries around you |
-| **Feedback** | Send suggestions and reports to the team |
+| **Sponsor schools**   | Fund book boxes for schools and track sponsorship progress             |
+| **Virtual library**   | Read approved public-domain and digital books in the browser           |
+| **Library map**       | Discover community and OpenStreetMap libraries around you              |
+| **Feedback**          | Send suggestions and reports to the team                               |
 
 ### Admin dashboard
 
@@ -30,11 +30,11 @@ Protected `/admin` area for moderators:
 
 ## Tech stack
 
-| Layer | Stack |
-| ----- | ----- |
-| Web app | Next.js 16, React 19, TypeScript |
-| Database | MongoDB (Mongoose) |
-| Maps | Leaflet, OpenStreetMap |
+| Layer    | Stack                            |
+| -------- | -------------------------------- |
+| Web app  | Next.js 16, React 19, TypeScript |
+| Database | MongoDB (Mongoose)               |
+| Maps     | Leaflet, OpenStreetMap           |
 
 The frontend and REST API live in one Next.js project — no separate backend server.
 
@@ -80,12 +80,12 @@ npm start
 
 ## Environment variables
 
-| Variable | Description |
-| -------- | ----------- |
-| `MONGODB_URI` | MongoDB connection string |
-| `ADMIN_USERNAME` | Break-glass super-admin username (default: `admin`) |
-| `ADMIN_PASSWORD` | Break-glass super-admin password (default: `admin`) |
-| `ADMIN_SECRET` | Session cookie signing secret — use a long random string in production |
+| Variable         | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| `MONGODB_URI`    | MongoDB connection string                                              |
+| `ADMIN_USERNAME` | Break-glass super-admin username (default: `admin`)                    |
+| `ADMIN_PASSWORD` | Break-glass super-admin password (default: `admin`)                    |
+| `ADMIN_SECRET`   | Session cookie signing secret — use a long random string in production |
 
 ## Project structure
 
