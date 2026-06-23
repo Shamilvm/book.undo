@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useCallback, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import MapLocationDialog from "@/components/pages/MapLocationDialog";
 import SelectField from "@/components/SelectField";
 import {
@@ -14,7 +14,7 @@ import {
 import { showToast } from "@/lib/toast";
 
 interface BorrowPageProps {
-  initialListings: Book[];
+  initialListings?: Book[];
 }
 
 function formatDistance(km?: number): string {
@@ -24,7 +24,8 @@ function formatDistance(km?: number): string {
 }
 
 export default function BorrowPage({ initialListings }: BorrowPageProps) {
-  const [listings, setListings] = useState(initialListings);
+  const [listings, setListings] = useState<Book[]>(initialListings ?? []);
+  const [loading, setLoading] = useState(!initialListings);
   const [emptyMsg, setEmptyMsg] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [userCoords, setUserCoords] = useState<{
@@ -48,29 +49,63 @@ export default function BorrowPage({ initialListings }: BorrowPageProps) {
     );
   }, []);
 
-  async function loadBooks(search: string, radius: string, coords: typeof userCoords) {
-    try {
-      if (coords) {
-        const books = await getNearbyBooks(
-          coords.lat,
-          coords.lng,
-          parseFloat(radius) || 10,
-          search || undefined,
-        );
+  const loadBooks = useCallback(
+    async (
+      search: string,
+      radius: string,
+      coords: { lat: number; lng: number } | null,
+    ) => {
+      setLoading(true);
+      try {
+        if (coords) {
+          const books = await getNearbyBooks(
+            coords.lat,
+            coords.lng,
+            parseFloat(radius) || 10,
+            search || undefined,
+          );
+          renderBooks(books);
+          return;
+        }
+        const books = await getBooks({
+          status: "available",
+          search: search || undefined,
+          limit: 50,
+          isTextbook: false,
+        });
         renderBooks(books);
-        return;
+      } catch {
+        setEmptyMsg("Could not reach the server. Try again later.");
+      } finally {
+        setLoading(false);
       }
-      const books = await getBooks({
-        status: "available",
-        search: search || undefined,
-        limit: 50,
-        isTextbook: false,
-      });
-      renderBooks(books);
-    } catch {
-      setEmptyMsg("Could not reach the server. Try again later.");
-    }
-  }
+    },
+    [renderBooks],
+  );
+
+  useEffect(() => {
+    if (initialListings) return;
+    void loadBooks("", "10", null);
+  }, [initialListings, loadBooks]);
+
+  useEffect(() => {
+    if (loading) return;
+
+    const revealVisible = () => {
+      const vh = window.innerHeight;
+      document
+        .querySelectorAll("#book-list .reveal:not(.is-visible)")
+        .forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < vh * 0.9 && r.bottom > vh * 0.1) {
+            el.classList.add("is-visible");
+          }
+        });
+    };
+
+    revealVisible();
+    requestAnimationFrame(revealVisible);
+  }, [loading, listings]);
 
   async function handleSearch(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -227,12 +262,14 @@ export default function BorrowPage({ initialListings }: BorrowPageProps) {
           </form>
 
           <p className="muted result-count" id="result-count">
-            Showing {listings.length} books
-            {userCoords ? " near you" : " shared locally"}
+            {loading
+              ? "Loading books…"
+              : `Showing ${listings.length} books${userCoords ? " near you" : " shared locally"}`}
           </p>
 
           <div className="grid grid-3" id="book-list">
-            {listings.map((b) => {
+            {!loading &&
+              listings.map((b) => {
               const done = (b as Book & { _borrowDone?: boolean })._borrowDone;
               return (
                 <article
@@ -269,7 +306,7 @@ export default function BorrowPage({ initialListings }: BorrowPageProps) {
               );
             })}
           </div>
-          {emptyMsg && (
+          {!loading && emptyMsg && (
             <p className="muted empty-msg" id="empty-msg">
               {emptyMsg}
             </p>

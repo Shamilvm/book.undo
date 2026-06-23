@@ -517,4 +517,10 @@
     justify-content: center;
     text-align: center;
   }
+  .foot-credit {
+    flex: 1 1 100%;
+    font-size: 0.7rem;
+    gap: 0rem;
+    width: 100%;
+  }
 }

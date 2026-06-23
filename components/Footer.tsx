@@ -85,7 +85,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            ☕ Buy me a coffee
+            ☕️ Buy me a coffee
           </a>
         </span>
       </div>

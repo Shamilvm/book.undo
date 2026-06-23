@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-bottom: 1.2rem;
 }
 .searchbar input {
@@ -35,26 +35,49 @@
   outline: 3px solid var(--accent);
   outline-offset: 0;
 }
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .searchbar {
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
   }
   .searchbar input {
-    flex: 1 1 0;
+    grid-column: 1 / -1;
+    width: 100%;
     min-width: 0;
     padding: 0.65rem 0.85rem;
     font-size: 0.92rem;
   }
   .searchbar .select-field {
-    min-width: 7.25rem;
+    min-width: 0;
+    width: 100%;
   }
   .searchbar .select-field .select-trigger {
     padding-inline: 0.85rem;
     font-size: 0.88rem;
+    width: 100%;
   }
   .searchbar .btn {
+    min-height: 2.85rem;
     padding-inline: 1rem;
     font-size: 0.92rem;
+    justify-content: center;
+  }
+  .searchbar .btn[type="submit"] {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .listing-top {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .dialog-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .dialog-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 .result-count {
@@ -66,6 +89,9 @@
   align-items: center;
   margin-bottom: 0.6rem;
 }
+.listing {
+  min-width: 0;
+}
 .cover {
   font-size: 2.4rem;
 }
@@ -76,6 +102,9 @@
   font-size: 0.9rem;
   color: var(--ink-soft);
   margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.35rem;
 }
 .full {
   width: 100%;
@@ -97,9 +126,12 @@
 .borrow-dialog {
   border: 1.5px solid var(--ink);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  max-width: 460px;
+  padding: clamp(1.1rem, 4vw, 1.5rem);
+  max-width: min(460px, calc(100vw - 2rem));
+  width: 100%;
+  margin: auto;
   background: var(--paper-surface);
+  box-sizing: border-box;
 }
 .borrow-dialog form {
   display: grid;
@@ -113,6 +145,7 @@
 }
 .borrow-dialog input {
   font: inherit;
+  width: 100%;
   padding: 0.65rem 0.8rem;
   border: 1.5px solid var(--ink);
   border-radius: var(--radius-lg);
@@ -123,6 +156,7 @@
   display: flex;
   gap: 0.75rem;
   justify-content: flex-end;
+  flex-wrap: wrap;
 }
 .form-error {
   color: #c0392b;
@@ -137,4 +171,10 @@
 }
 .borrow-dialog .location-picker-hint {
   margin: 0;
+}
+.borrow-dialog .report-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
